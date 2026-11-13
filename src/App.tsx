@@ -1,5 +1,7 @@
 import { useGameStore } from './store/gameStore';
 import type { Screen } from './store/gameStore';
+import Home from './screens/Home';
+import Briefing from './screens/Briefing';
 
 const screens: Screen[] = [
   'home',
@@ -33,7 +35,11 @@ export default function App() {
           </button>
         ))}
       </nav>
-      <Placeholder name={currentScreen} />
+      {currentScreen === 'home' && <Home />}
+      {currentScreen === 'briefing' && <Briefing />}
+      {currentScreen !== 'home' && currentScreen !== 'briefing' && (
+        <Placeholder name={currentScreen} />
+      )}
     </div>
   );
 }
