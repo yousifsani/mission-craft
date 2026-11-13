@@ -2,6 +2,11 @@ import { useGameStore } from './store/gameStore';
 import type { Screen } from './store/gameStore';
 import Home from './screens/Home';
 import Briefing from './screens/Briefing';
+import Designer from './screens/Designer';
+import Rocket from './screens/Rocket';
+import Readiness from './screens/Readiness';
+import Simulation from './screens/Simulation';
+import Debrief from './screens/Debrief';
 
 const screens: Screen[] = [
   'home',
@@ -12,10 +17,6 @@ const screens: Screen[] = [
   'simulation',
   'debrief',
 ];
-
-function Placeholder({ name }: { name: string }) {
-  return <div className="p-8 text-2xl capitalize">{name} screen (coming soon)</div>;
-}
 
 export default function App() {
   const { currentScreen, setScreen } = useGameStore();
@@ -37,9 +38,11 @@ export default function App() {
       </nav>
       {currentScreen === 'home' && <Home />}
       {currentScreen === 'briefing' && <Briefing />}
-      {currentScreen !== 'home' && currentScreen !== 'briefing' && (
-        <Placeholder name={currentScreen} />
-      )}
+      {currentScreen === 'designer' && <Designer />}
+      {currentScreen === 'rocket' && <Rocket />}
+      {currentScreen === 'readiness' && <Readiness />}
+      {currentScreen === 'simulation' && <Simulation />}
+      {currentScreen === 'debrief' && <Debrief />}
     </div>
   );
 }
